@@ -9,6 +9,13 @@
 </head>
 <body>
     <div class="app">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Open menu">☰</button>
+            <span class="topbar-title">Noble</span>
+        </header>
+
+        <div class="menu-backdrop" hidden></div>
+
         <aside class="menu">
             <h2 class="title">Meow!</h2>
             <ul>
@@ -16,6 +23,7 @@
                 <li><button class="menu-item active" data-display-checker="about" onclick="checkActiveMenuItem('about')">About</button><ion-icon class="icon" name="ellipse"></ion-icon></li>
             </ul>
         </aside>
+
         <main class="display" data-display="about">
             <section id="chat" hidden>
                 <h1 class="display-title">chit chat</h1>
@@ -27,9 +35,9 @@
             <section id="about" hidden>
                 <h1 class="display-title">About Noble</h1>
                 <div class="display-content">
-                    <p>Noble is a simple chat application.</p>
-                    <p>It allows users to communicate in real-time.</p>
-                    <p>It is built using modern web technologies and follows best practices for web development.</p>
+                    <p>Noble is anonymous chatting app.</p>
+                    <p>What makes it different from any other chatting app?</p>
+                    <p>For starters i am planning to actually moderate it, and to let other person know estimate of how far user they are matched with is, just like 'The Girl from Random Chatting!' Manwhua.</p>
                     <br>
                     <p>Created by <a href="https://github.com/SinNerf" target="_blank">dyieus</a></p>
                     <img src="assets/noble.png" alt="Noble Logo" class="logo">
@@ -40,7 +48,6 @@
 
     <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
-    <script src="app://dynamic.js"></script>
     <script src="assets/app.js"></script>
 </body>
 </html>

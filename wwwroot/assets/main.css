@@ -19,8 +19,11 @@
     --danger: #e35d6a;
     --success: #3ecf8e;
 
-    /* 
-        js to be honest, AI came up w this colors. 
+    --menu-width: 260px;
+    --topbar-height: 52px;
+
+    /*
+        js to be honest, AI came up w this colors.
         i like it so ill keep it for now.
     */
 }
@@ -33,40 +36,47 @@ html, body {
 }
 
 p {
-    font-size: 21px;
+    font-size: clamp(16px, 2.5vw, 21px);
 }
-
-/* application layout */
 
 .app {
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.topbar {
+    display: none;
+}
+
+.menu-backdrop {
+    display: none;
 }
 
 .menu {
-    width: 25%;
-    height: 100%;
+    width: var(--menu-width);
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     position: relative;
     gap: 10px;
     padding: 10px;
-
     background-color: var(--bg-menu);
     border-right: 1px solid var(--border);
 }
 
-.display {
-    height: 100%;
-    flex: 1;
-    position: relative;
-
-    background-color: var(--bg-display);
+.app.hide-menu .menu {
+    display: none;
 }
 
-/* menu layout */
+.display {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    overflow: auto;
+    background-color: var(--bg-display);
+}
 
 .menu .title {
     color: var(--text-strong);
@@ -88,7 +98,6 @@ p {
 
 .menu ul li button {
     width: 150px;
-    height: 100%;
     padding: 10px;
     border: none;
     background-color: var(--bg-surface);
@@ -119,13 +128,6 @@ p {
     color: var(--accent);
 }
 
-/* display sector */
-/* display:about page */
-
-.display {
-    overflow: hidden;
-}
-
 .display section[hidden] {
     display: none !important;
 }
@@ -151,7 +153,7 @@ p {
 
 .display-content p {
     color: var(--text-muted);
-    line-height: 1.1;
+    line-height: 1.4;
 }
 
 .display-content p a {
@@ -165,7 +167,94 @@ p {
 
 .display-content img {
     align-self: center;
-    width: 10rem;
-    height: 10rem;
+    width: min(10rem, 40vw);
+    height: auto;
+    aspect-ratio: 1;
     border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        height: var(--topbar-height);
+        padding: 0 12px;
+        background: var(--bg-menu);
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+        z-index: 30;
+    }
+
+    .topbar-title {
+        color: var(--text-strong);
+        font-weight: 600;
+    }
+
+    .menu-toggle {
+        border: none;
+        background: var(--bg-surface);
+        color: var(--text);
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .menu-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 40;
+    }
+
+    .menu-backdrop[hidden] {
+        display: none !important;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(var(--menu-width), 85vw);
+        z-index: 50;
+        border-right: 1px solid var(--border);
+        transform: translateX(-105%);
+        transition: transform 0.2s ease;
+    }
+
+    .app.menu-open .menu {
+        transform: translateX(0);
+        display: flex;
+    }
+
+    .app.hide-menu .menu {
+        display: flex;
+        transform: translateX(-105%);
+    }
+
+    .display {
+        height: calc(100dvh - var(--topbar-height));
+    }
+
+    .display section {
+        padding: 16px;
+    }
+
+    .display-content {
+        padding: 12px;
+    }
+
+    .menu ul li button {
+        width: 100%;
+        max-width: 180px;
+        border-radius: 10px;
+    }
 }
