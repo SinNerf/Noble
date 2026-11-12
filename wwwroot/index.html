@@ -10,14 +10,36 @@
 <body>
     <div class="app">
         <aside class="menu">
-            <button class="hide" type="button" onclick="modMenu()">←</button>
-
+            <h2 class="title">Meow!</h2>
+            <ul>
+                <li><button class="menu-item inactive" data-display-checker="chat" onclick="checkActiveMenuItem('chat')">Chat</button><ion-icon class="icon" name="ellipse-outline"></ion-icon></li>
+                <li><button class="menu-item active" data-display-checker="about" onclick="checkActiveMenuItem('about')">About</button><ion-icon class="icon" name="ellipse"></ion-icon></li>
+            </ul>
         </aside>
-        <main class="display">
-            <button class="show" type="button" onclick="modMenu()" hidden>→</button>
+        <main class="display" data-display="about">
+            <section id="chat" hidden>
+                <h1 class="display-title">chit chat</h1>
+                <div class="display-content">
+                    <p>Chat is currently unavailable.</p>
+                    <p>We are working on it.</p>
+                </div>
+            </section>
+            <section id="about" hidden>
+                <h1 class="display-title">About Noble</h1>
+                <div class="display-content">
+                    <p>Noble is a simple chat application.</p>
+                    <p>It allows users to communicate in real-time.</p>
+                    <p>It is built using modern web technologies and follows best practices for web development.</p>
+                    <br>
+                    <p>Created by <a href="https://github.com/SinNerf" target="_blank">dyieus</a></p>
+                    <img src="assets/noble.png" alt="Noble Logo" class="logo">
+                </div>
+            </section>
         </main>
     </div>
 
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
     <script src="app://dynamic.js"></script>
     <script src="assets/app.js"></script>
 </body>

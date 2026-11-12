@@ -1,9 +1,42 @@
 * { box-sizing: border-box; }
 
+:root {
+    --bg-app: #0f1419;
+    --bg-menu: #1a222c;
+    --bg-display: #121820;
+    --bg-surface: #243041;
+    --bg-surface-hover: #2f3f54;
+
+    --text: #e8eef4;
+    --text-muted: #9aa8b5;
+    --text-strong: #ffffff;
+
+    --accent: #3d8bfd;
+    --accent-hover: #5c9fff;
+    --accent-soft: rgba(61, 139, 253, 0.18);
+
+    --border: #2a3544;
+    --danger: #e35d6a;
+    --success: #3ecf8e;
+
+    /* 
+        js to be honest, AI came up w this colors. 
+        i like it so ill keep it for now.
+    */
+}
+
 html, body {
     margin: 0;
     padding: 0;
+    background: var(--bg-app);
+    color: var(--text);
 }
+
+p {
+    font-size: 21px;
+}
+
+/* application layout */
 
 .app {
     display: flex;
@@ -21,7 +54,8 @@ html, body {
     gap: 10px;
     padding: 10px;
 
-    background-color: #000000;
+    background-color: var(--bg-menu);
+    border-right: 1px solid var(--border);
 }
 
 .display {
@@ -29,11 +63,109 @@ html, body {
     flex: 1;
     position: relative;
 
-    background-color: #0202f5;
+    background-color: var(--bg-display);
 }
 
-.hide {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+/* menu layout */
+
+.menu .title {
+    color: var(--text-strong);
+    align-self: center;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0 10px;
+}
+
+.menu ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.menu ul li button {
+    width: 150px;
+    height: 100%;
+    padding: 10px;
+    border: none;
+    background-color: var(--bg-surface);
+    color: var(--text);
+    border-radius: 10px 0 0 10px;
+}
+
+.menu ul li button:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: var(--bg-surface-hover);
+    cursor: pointer;
+}
+
+.menu ul li button.active {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+}
+
+.menu ul li .icon {
+    font-size: 23px;
+    margin: 0 0 0 10px;
+    display: block;
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
+.menu ul li button.active + .icon {
+    color: var(--accent);
+}
+
+/* display sector */
+/* display:about page */
+
+.display {
+    overflow: hidden;
+}
+
+.display section[hidden] {
+    display: none !important;
+}
+
+.display section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.display-title {
+    color: var(--text-strong);
+    align-self: center;
+}
+
+.display-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.display-content p {
+    color: var(--text-muted);
+    line-height: 1.1;
+}
+
+.display-content p a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.display-content p a:hover {
+    text-decoration: underline;
+}
+
+.display-content img {
+    align-self: center;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
 }

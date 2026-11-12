@@ -12,13 +12,15 @@ namespace HelloPhotinoApp
         static void Main(string[] args)
         {
             // Window title declared here for visibility
-            string windowTitle = "Photino for .NET Demo App";
+            string windowTitle = "Noble";
 
             // Creating a new PhotinoWindow instance with the fluent API
             var window = new PhotinoWindow()
                 .SetTitle(windowTitle)
                 // Resize to a percentage of the main monitor work area
                 .SetUseOsDefaultSize(false)
+                .SetDevToolsEnabled(false)
+                .SetContextMenuEnabled(false)
                 .SetSize(new Size(1024, 800))
                 // Center window in the middle of the screen
                 .Center()
@@ -58,3 +60,5 @@ namespace HelloPhotinoApp
         }
     }
 }
+
+// what the fuck is going on up there? </3
